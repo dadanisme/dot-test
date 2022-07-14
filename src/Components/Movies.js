@@ -22,7 +22,6 @@ export default function Movies(props) {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.Response === "True") {
             setMovies(data.Search);
             setIsLoading(false);
