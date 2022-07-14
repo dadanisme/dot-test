@@ -4,8 +4,6 @@ import { Spinner } from "react-bootstrap";
 import MovieDetails from "./MovieDetails";
 
 export default function Movies(props) {
-  const omdbApiKey = process.env.REACT_APP_OMDB_API_KEY;
-
   const [input, setInput] = useState("");
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,9 +15,7 @@ export default function Movies(props) {
   useEffect(() => {
     if (input.length > 0) {
       setIsLoading(true);
-      fetch(
-        `https://www.omdbapi.com/?apikey=${omdbApiKey}&s=${input}&plot=full`
-      )
+      fetch(`https://www.omdbapi.com/?apikey=bc306af4&s=${input}&plot=full`)
         .then((res) => res.json())
         .then((data) => {
           if (data.Response === "True") {
@@ -31,7 +27,7 @@ export default function Movies(props) {
           }
         });
     }
-  }, [input, omdbApiKey]);
+  }, [input]);
 
   if (isLoading) {
     return (
