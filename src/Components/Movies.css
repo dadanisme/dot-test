@@ -1,0 +1,56 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.movies {
+  padding: 20px;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card {
+  border-radius: 15px;
+  margin: 5px;
+  height: max-content;
+}
+
+.card-img-top {
+  height: 500px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-body {
+  height: 120px;
+}
+
+.imdb-button {
+  width: 100%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  text-align: center;
+  background-color: var(--bs-primary);
+  color: var(--bs-light);
+  padding: 10px;
+}
+
+.imdb-button:hover {
+  background-color: var(--bs-info);
+}
+
+a.imdb-button {
+  text-decoration: none;
+}

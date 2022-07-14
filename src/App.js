@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./Components/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
+import Movies from "./Components/Movies";
 
 function App() {
+  const [input, setInput] = useState("");
+  const [isInput, setIsInput] = useState(false);
+  const handleSearch = (text) => {
+    setInput(text);
+    setIsInput(true);
+  };
+
+  if (!localStorage.getItem("user")) {
+    window.location.href = "/login";
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <Navbar onSearch={handleSearch} />
+      {isInput && input.length > 0 ? (
+        <Movies search={input} />
+      ) : isInput && input.length === 0 ? (
+        <div className="alert alert-info" role="alert">
+          Please enter a search term.
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
